@@ -5,4 +5,4 @@ sudo python get-pip.py
 
 sudo pip install pyserial
 
-
+sudo adduser $USER dialout
