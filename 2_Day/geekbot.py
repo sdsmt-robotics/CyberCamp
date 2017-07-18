@@ -3,7 +3,6 @@ from time import sleep as wait
 from struct import pack, unpack
 from collections import namedtuple
 
-
 handshake  = 0x77
 end_flag   = 0x33
 
@@ -71,14 +70,14 @@ class Robot:
         if adjust == None:
             self.send_cmd(drive_flag, speed)
         else: 
-            self.send_cmd(left_flag, speed)
+            self.send_cmd(left_flag, -speed)
             adjusted = speed+adjust
-            if adjusted > 100:
-                self.send_cmd(right_flag, 100)
+            if   adjusted > 100:
+                self.send_cmd(right_flag, -100)
             elif adjusted < 0:
                 self.send_cmd(right_flag, 0)
             else:
-                self.send_cmd(right_flag, speed+adjust)
+                self.send_cmd(right_flag, -speed+adjust)
         if seconds == None:
             return
         wait(seconds)
@@ -89,14 +88,14 @@ class Robot:
         if adjust == None:
             self.send_cmd(drive_flag, -speed)
         else: 
-            self.send_cmd(left_flag, -speed)
+            self.send_cmd(left_flag, speed)
             adjusted = speed+adjust
             if   adjusted > 100:
-                self.send_cmd(right_flag, -100)
+                self.send_cmd(right_flag, 100)
             elif adjusted < 0:
-                self.send_cmd(right_flag, -0)
+                self.send_cmd(right_flag, 0)
             else:
-                self.send_cmd(right_flag, -speed+adjust)
+                self.send_cmd(right_flag, speed+adjust)
         if seconds == None:
             return
         wait(seconds)
