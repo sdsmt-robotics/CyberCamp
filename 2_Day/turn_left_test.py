@@ -1,6 +1,7 @@
 #!/usr/bin/env python 
 
 import geekbot
+from time import sleep as wait
 
 # This starts our robot up and connects to it
 # syntax: robot_name = geekbot.Robot( "serial_port_location", baud_rate)

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import geekbot
+from time import sleep as wait
 
 geek = geekbot.Robot("/dev/ttyUSB0", 57600)
 
