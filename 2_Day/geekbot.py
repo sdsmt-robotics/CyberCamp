@@ -77,7 +77,7 @@ class Robot:
             elif adjusted < 0:
                 self.send_cmd(right_flag, 0)
             else:
-                self.send_cmd(right_flag, -speed+adjust)
+                self.send_cmd(right_flag, -(speed+adjust))
         if seconds == None:
             return
         wait(seconds)
