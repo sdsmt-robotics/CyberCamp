@@ -24,7 +24,7 @@ class Robot:
         self.port.timeout = 1
         self.port.dtr = 0
         self.port.open()
-        wait(3)
+        wait(1.5)
         self.port.write(chr(handshake))
         wait(1)
         while self.port.read() != chr(0x77):
@@ -58,9 +58,17 @@ class Robot:
     def halt(self):
         self.send_cmd(drive_flag, 0)
 
-    def turn(self, speed, seconds=None):
+    def turn_right(self, speed, seconds=None):
         self.send_cmd(left_flag, -speed)
         self.send_cmd(right_flag, speed)
+        if seconds != None:
+            wait(seconds)
+            self.halt()
+        return
+
+    def turn_left(self, speed, seconds=None):
+        self.send_cmd(left_flag, speed)
+        self.send_cmd(right_flag, -speed)
         if seconds != None:
             wait(seconds)
             self.halt()

@@ -22,7 +22,7 @@ while i < 4:
 
     # Use the 'turn' function with a value between 0 and 100 for a right hand turn
     # syntax: geek.turn_right( speed_to_turn )   
-    geek.turn_right(50)
+    geek.turn_left(50)
 
     # Use the 'wait' function to give the robot time to turn.
     # This is the number you'll want to adjust to get 90 degree
