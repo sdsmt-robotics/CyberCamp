@@ -33,6 +33,7 @@ class Robot:
 
     def shutdown(self):
         self.halt()
+        wait(.5)
         self.port.close()
 
     def map_short(self, num): #where num is a num 0 - 100
@@ -134,7 +135,7 @@ class Robot:
     def beep(self, beeps):
         for i in range (0,beeps):
             self.buzzer_on()
-            wait(.25)
+            wait(.125)
             self.buzzer_off()
-            wait(.25)
+            wait(.125)
 
