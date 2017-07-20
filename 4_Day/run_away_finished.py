@@ -22,11 +22,14 @@ MIN_DIST = 15
 
 while 1:                                    # Loop
     try:
-        geek.drive_forward(50, -6)          # Drive
+        wait(.1)                            # Updates the sensor (1/0.1) = 10 times a second
+        geek.drive_forward(50, -6)          # Drive forward
         dist = geek.get_ir_distance()       # Get ir distance
-        print(dist)                         # Print the distance out to the screen
+        print(dist)                         # Print the distance seen out to the screen
 
-        if dist <= MIN_DIST:                # If an object is too close
+        if dist != -1 and dist <= MIN_DIST: # If we get a valid reading AND 
+                                            # the reading is "close enough"
+
             geek.halt()                     # Stop moving
             geek.beep(1)                    # Beep
             geek.set_ir_position(-90)       # Look left
@@ -34,12 +37,12 @@ while 1:                                    # Loop
             dist = geek.get_ir_distance()   # Get distance
             print(dist)
 
-            if dist <= MIN_DIST:
+            if dist <= MIN_DIST: # Is the left side also blocked? If so do this
                 wait(.2)
                 geek.beep(1)
                 geek.set_ir_position(0)
                 turn_right_90()
-            else:
+            else:                # If it's not blocked do this
                 wait(.2)
                 geek.set_ir_position(0)
                 turn_left_90()
