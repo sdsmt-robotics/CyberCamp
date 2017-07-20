@@ -119,6 +119,7 @@ class Robot:
 
     def get_ir_distance(self):
         self.send_cmd(ir_read_flag, 1)
+        wait(0.05)
         data = self.port.read(2)
         dist = unpack(">h", data)
         return dist[0]
